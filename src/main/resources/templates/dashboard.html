@@ -1,0 +1,55 @@
+#parse("base.html")
+#@mainLayout()
+<h1>Tableau de bord des commandes</h1>
+
+<a href="#">Refresh</a>
+
+<h2></h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Etat</th>
+        <th>Item</th>
+        <th>Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    #foreach ($c in $commands)
+    <tr>
+        <td>
+            <a href="/command/edit/$c.getNumber()">
+                $c.getNumber()
+            </a>
+        </td>
+        <td>$c.getState().name()</td>
+        <td>$c.getItem().getTypeName()</td>
+        <td>$c.getItem().getName()</td>
+    </tr>
+    #end
+    </tbody>
+</table>
+
+<h2>Historique</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Descriptif</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+
+    </tr>
+
+    </tbody>
+</table>
+
+
+
+#end

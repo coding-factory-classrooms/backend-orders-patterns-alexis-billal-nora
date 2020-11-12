@@ -31,7 +31,7 @@ public class CommandController {
         model.put("command", command);
         model.put("states", Command.State.values());
 
-        return Template.render("command_detail.html", model);
+        return Template.render("suivi_client.html", model);
     }
 
     public String edit(Request request, Response response) {
@@ -63,6 +63,7 @@ public class CommandController {
         // Ajout des variables pour la view HMTL
         model.put("id", id);
         model.put("command", command);
+        model.put("states", Command.State.values());
 
         return Template.render("command_detail.html", model);
     }
