@@ -1,5 +1,7 @@
 package org.example.models;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Command {
@@ -14,6 +16,7 @@ public class Command {
     private int number;
     protected State state = State.NEW;
     private Item item;
+    private LocalDateTime dateTimeCommand;
 
     public int getNumber() {
         return number;
@@ -36,5 +39,13 @@ public class Command {
     }
     public void setState(State state) {
         this.state = state;
+    }
+
+    public LocalDateTime getDateTimeCommand() {
+        return dateTimeCommand;
+    }
+
+    public void setDateTimeCommand(LocalDateTime dateTimeCommand) {
+        this.dateTimeCommand = dateTimeCommand;
     }
 }

@@ -8,6 +8,9 @@ import org.example.models.Command;
 import org.example.models.Pizza;
 import spark.Spark;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class App {
     public static void main(String[] args) {
         initialize();
@@ -28,14 +31,20 @@ public class App {
         Command command = new Command();
         command.setNumber(1);
         command.setItem(pizza);
+        LocalDateTime heure = LocalDateTime.now();
+        command.setDateTimeCommand(heure);
 
         Command command2 = new Command();
         command2.setNumber(2);
         command2.setItem(burger);
+        LocalDateTime h1 = LocalDateTime.now();
+        command.setDateTimeCommand(h1);
 
         Command command3 = new Command();
         command3.setNumber(3);
         command3.setItem(pizza2);
+        LocalDateTime h2 = LocalDateTime.now();
+        command.setDateTimeCommand(h2);
 
         // Assignation des "Item" au homeSystem
         homeSystem.addItem(pizza);
@@ -49,10 +58,12 @@ public class App {
 
         HomeSystemController homeSystemController = new HomeSystemController();
         CommandController commandController = new CommandController();
+        DashboardController dashboardController = new DashboardController();
 
         Spark.get("/", (req, res) -> homeSystemController.list(req, res));
         Spark.get("/command/:id", (req, res) -> commandController.detail(req, res));
         Spark.get("/command/edit/:id", (req, res) -> commandController.edit(req, res));
+        Spark.get("/dashboard", (req, res) -> dashboardController.current(req, res));
     }
 
     static void initialize() {
