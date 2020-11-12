@@ -8,14 +8,13 @@ import org.example.models.Command;
 import org.example.models.Pizza;
 import spark.Spark;
 
-import java.util.HashMap;
-
 public class App {
     public static void main(String[] args) {
         initialize();
 
         HomeSystem homeSystem  = HomeSystem.getInstance();
 
+        // Création des "Item"
         Pizza pizza = new Pizza();
         pizza.setName("Reine");
 
@@ -25,6 +24,7 @@ public class App {
         Burger burger = new Burger();
         burger.setName("CheeseBurger");
 
+        // Création de fausses commandes
         Command command = new Command();
         command.setNumber(1);
         command.setItem(pizza);
@@ -37,13 +37,22 @@ public class App {
         command3.setNumber(3);
         command3.setItem(pizza2);
 
+        // Assignation des "Item" au homeSystem
+        homeSystem.addItem(pizza);
+        homeSystem.addItem(pizza2);
+        homeSystem.addItem(burger);
+
+        // Assignation des "Command" au homeSystem
         homeSystem.addCommand(command);
         homeSystem.addCommand(command2);
         homeSystem.addCommand(command3);
 
         HomeSystemController homeSystemController = new HomeSystemController();
+        CommandController commandController = new CommandController();
 
         Spark.get("/", (req, res) -> homeSystemController.list(req, res));
+        Spark.get("/command/:id", (req, res) -> commandController.detail(req, res));
+        Spark.get("/command/edit/:id", (req, res) -> commandController.edit(req, res));
     }
 
     static void initialize() {
