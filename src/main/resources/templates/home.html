@@ -14,7 +14,11 @@
     <tbody>
     #foreach ($c in $commands)
     <tr>
-        <td>$c.getNumber()</td>
+        <td>
+            <a href="/command/$c.getNumber()">
+                $c.getNumber()
+            </a>
+        </td>
         <td>$c.getState().name()</td>
         <td>$c.getItem().getTypeName()</td>
         <td>$c.getItem().getName()</td>
@@ -22,5 +26,23 @@
     #end
     </tbody>
 </table>
+
+<hr>
+
+<p>Tout les aliments disponibles :</p>
+
+<form action="/" method="GET">
+    <label for="item-select">Choisissez un aliment:</label>
+
+    <input type="hidden" name="action" value="new" />
+
+    <select name="items" id="item-select">
+        #foreach ($i in $items)
+        <option value="$velocityCount">$i.getName()</option>
+        #end
+    </select>
+
+    <button type="submit">Nouvelle commande</button>
+</form>
 
 #end

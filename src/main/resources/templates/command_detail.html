@@ -1,0 +1,26 @@
+#parse("base.html")
+#@mainLayout()
+<h1>Command - $command.getNumber()</h1>
+
+<p>N°: $command.getNumber()</p>
+<p>Etat: $command.getState().name()</p>
+<p>Type d'aliment: $command.getItem().getTypeName()</p>
+<p>Nom de l'aliment: $command.getItem().getName()</p>
+
+<hr>
+
+<form action="/command/edit/$command.getNumber()" method="GET">
+    <label for="state-select">Choisissez un status:</label>
+
+    <input type="hidden" name="action" value="edit" />
+
+    <select name="state" id="state-select">
+        #foreach ($s in $states)
+        <option value="$velocityCount">$s.name()</option>
+        #end
+    </select>
+
+    <button type="submit">Mettre a jour</button>
+</form>
+
+#end

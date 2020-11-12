@@ -1,5 +1,7 @@
 package org.example.models;
 
+import java.util.List;
+
 public class Command {
 
     public enum State {
@@ -35,5 +37,4 @@ public class Command {
     public void setState(State state) {
         this.state = state;
     }
-
 }
