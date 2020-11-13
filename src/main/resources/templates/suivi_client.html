@@ -1,0 +1,27 @@
+#parse("base.html")
+#@mainLayout()
+<h1>Suivi Client # $command.getNumber() </h1>
+
+<p> Statut Commande  : $command.getState().name() </p>
+
+<h2>Historique</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Descriptif</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td>$command.getDateTimeCommand()</td>
+        <td>$command.getItem().getTypeName() - $command.getItem().getName()</td>
+    </tr>
+    </tbody>
+</table>
+
+
+#end

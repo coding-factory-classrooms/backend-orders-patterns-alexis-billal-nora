@@ -1,0 +1,29 @@
+classDiagram
+    Item <|-- Pizza
+    Item <|-- Burger
+    Command -- CommandState
+    Command -- Item
+    class Burger{
+      +String getTypeName()
+    }
+    class Pizza{
+      +String getTypeName()
+    }
+    class Item {
+      #String name
+    }
+    class Command {
+      #int number
+      #date dateTimeCommand
+      #item Item 
+    }
+    class CommandState {
+      <<enumeration>>
+      NEW
+      IN_PROGRESS
+      FINISHED
+      CANCELLED
+    }
+    <<abstract>> Item
+
+            

@@ -6,10 +6,17 @@ import org.example.models.Item;
 import spark.Request;
 import spark.Response;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+/*
+Commande client - Point de départ -
+Menu et choix items
+ */
 public class HomeSystemController {
     public String list(Request request, Response response) {
         HomeSystem homeSystem = HomeSystem.getInstance();
@@ -35,6 +42,8 @@ public class HomeSystemController {
 
             // Création de la "Command"
             Command command = new Command();
+            LocalDateTime dateTime = LocalDateTime.now();
+            command.setDateTimeCommand(dateTime);
             command.setNumber(newCommandNumber);
             command.setItem(item);
 

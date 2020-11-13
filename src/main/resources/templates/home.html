@@ -1,31 +1,8 @@
 #parse("base.html")
 #@mainLayout()
-<h1>Home Template</h1>
+<h1>Menu - Commande Client</h1>
 
-<table>
-    <thead>
-    <tr>
-        <th>N°</th>
-        <th>Etat</th>
-        <th>Item</th>
-        <th>Nom</th>
-    </tr>
-    </thead>
-    <tbody>
-    #foreach ($c in $commands)
-    <tr>
-        <td>
-            <a href="/command/$c.getNumber()">
-                $c.getNumber()
-            </a>
-        </td>
-        <td>$c.getState().name()</td>
-        <td>$c.getItem().getTypeName()</td>
-        <td>$c.getItem().getName()</td>
-    </tr>
-    #end
-    </tbody>
-</table>
+<a href="/dashboard">Dashboard</a>
 
 <hr>
 
