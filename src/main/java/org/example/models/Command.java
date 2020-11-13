@@ -17,6 +17,20 @@ public class Command {
     protected State state = State.NEW;
     private Item item;
     private LocalDateTime dateTimeCommand;
+    private List<Command> commands;
+    // private OnChangedCommandListener onChangedCommandListener;
+
+   //Instance de memento
+    public Memento storeInMemento(java.awt.List listCommand){
+        System.out.println("From Command: Saving to Memento");
+        return new Memento(commands);
+    }
+
+    public List<Command> restoreFromMemento(Memento memento){
+        commands = memento.getCommandList();
+        System.out.println("From Command: Previous list saved in  Memento");
+        return commands;
+    }
 
     public int getNumber() {
         return number;
@@ -49,3 +63,4 @@ public class Command {
         this.dateTimeCommand = dateTimeCommand;
     }
 }
+
